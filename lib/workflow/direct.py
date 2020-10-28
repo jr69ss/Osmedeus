@@ -18,7 +18,7 @@ class SubdomainScanning:
         'general': [
             {
                 "banner": "Amass",
-                "cmd": "$GO_PATH/amass enum -timeout 10 -active -max-dns-queries 10000 -include-unresolvable -active -dir $WORKSPACE/subdomain/amass-$OUTPUT -d $TARGET -o $WORKSPACE/subdomain/$OUTPUT-amass.txt",
+                "cmd": "$GO_PATH/amass enum -timeout 10 -active -max-dns-queries 10000 -include-unresolvable -dir $WORKSPACE/subdomain/amass-$OUTPUT -d $TARGET -o $WORKSPACE/subdomain/$OUTPUT-amass.txt",
                 "output_path": "$WORKSPACE/subdomain/$OUTPUT-amass.txt",
                 "std_path": "$WORKSPACE/subdomain/std-$TARGET-amass.std"
             },
@@ -548,7 +548,7 @@ class IPSpace:
         'general': [
             {
                 "banner": "Metabigor IP Lookup",
-                "cmd": "PLUGINS_PATH/Metabigor/metabigor.py -m ip -t $TARGET -o $WORKSPACE/ipspace/range-$OUTPUT.txt",
+                "cmd": "echo '$TARGET' | $GO_PATH/metabigor net -o $WORKSPACE/ipspace/range-$OUTPUT.txt",
                 "output_path": "$WORKSPACE/ipspace/range-$OUTPUT.txt",
                 "std_path": "",
                 "post_run": "get_amass",
